@@ -84,7 +84,7 @@ print('Writing card (DO NOT REMOVE CARD FROM PN532)...')
 
 # Write the card!
 # First authenticate block 4.
-if not pn532.mifare_classic_authenticate_block(uid, 2, PN532.MIFARE_CMD_AUTH_B,
+if not pn532.mifare_classic_authenticate_block(uid, 6, PN532.MIFARE_CMD_AUTH_B,
                                                CARD_KEY):
     print('Error! Failed to authenticate block 4 with the card.')
     sys.exit(-1)
@@ -92,7 +92,7 @@ if not pn532.mifare_classic_authenticate_block(uid, 2, PN532.MIFARE_CMD_AUTH_B,
 # Format is as follows:
 # - 2 bytes 0-1 store a header with ASCII value, for example 'BG'
 # - 6 bytes 2-7 store the user data, for example user ID
-data = bytearray(32)
+data = bytearray(16)
 # Add header
 data[0:2] = HEADER
 # Convert int to hex string with up to 6 digits
@@ -101,7 +101,7 @@ while (6 > len(value)):
     value = '0' + value
 data[2:8] = value
 # Finally write the card.
-if not pn532.mifare_classic_write_block(2, data):
+if not pn532.mifare_classic_write_block(6, data):
     print('Error! Failed to write to the card.')
     sys.exit(-1)
 print('Wrote card successfully! You may now remove the card from the PN532.')
