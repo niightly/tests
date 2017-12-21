@@ -60,7 +60,7 @@ while block_choice is None:
     print('')
     block_choice = input('Enter user ID: ')
     try:
-        block_choice = int(block_choice)
+        block_choice = block_choice
     except ValueError:
         print('Error! Unrecognized option.')
         continue
@@ -96,7 +96,7 @@ data = bytearray(16)
 # Add header
 data[0:2] = HEADER
 # Convert int to hex string with up to 6 digits
-value = format(block_choice, 'x')
+value = block_choice
 while (6 > len(value)):
     value = '0' + value
 data[2:8] = value
