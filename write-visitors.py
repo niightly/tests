@@ -57,7 +57,7 @@ print('')
 print('== STEP 2 =========================')
 block_choice = None
 x = 0
-while x < 500: #block_choice is None:
+while x < 20: #block_choice is None:
     x += 1
     print('')
     # block_choice = input('Enter user ID: ')
@@ -102,7 +102,7 @@ while x < 500: #block_choice is None:
     data[0:2] = HEADER
     # Convert int to hex string with up to 6 digits
     value = block_choice
-    while (6 > len(value)):
+    while (x > len(value)):
         value = '1' + value
 
     data[2:8] = value
