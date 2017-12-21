@@ -70,11 +70,11 @@ while True:
 
         continue
     # Check the header
-    if data[:4] !=  HEADER:
-        print('Card is not written with proper block data!')
-        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
+    # if data[:4] !=  HEADER:
+    #     print('Card is not written with proper block data!')
+    #     urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
 
-        continue
+    #     continue
     # Parse out the block type and subtype
     print('Read block 4: 0x{0}'.format(binascii.hexlify(data[:4])))
     # print(URL.format(data[2:8].decode("utf-8")))
