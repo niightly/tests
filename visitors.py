@@ -75,6 +75,6 @@ while True:
 
         continue
     # Parse out the block type and subtype
-    print('User Id: {0}')
+    print('User Id: {0}'.format(int(data[2:8].decode("utf-8"), 16)))
     urllib2.urlopen(urllib2.Request(URL.format(int(data[2:8].decode("utf-8"), 16))))
     time.sleep(DELAY);
