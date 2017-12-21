@@ -69,7 +69,6 @@ while x < 999999: #block_choice is None:
     # Decimal value not greater than hex number with 6 digits
         
     block_choice = str(x)
-    print('UserID: {0}'.format(block_choice))
 
     # if not (0 <= block_choice < 16777215):
     #     print('Error! User ID must be within 0 to 4294967295.')
@@ -105,7 +104,10 @@ while x < 999999: #block_choice is None:
     value = block_choice
     while (6 > len(value)):
         value = '0' + value
+
     data[2:8] = value
+
+    print('UserID: {0}'.format(value))
     # Finally write the card.
     if not pn532.mifare_classic_write_block(4, data):
         print('Error! Failed to write to the card.')
