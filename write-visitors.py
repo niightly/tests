@@ -76,10 +76,10 @@ print('')
 print('== STEP 3 =========================')
 print('Confirm you are ready to write to the card:')
 print('User ID: {0}'.format(block_choice))
-choice = input('Confirm card write (Y or N)? ')
-if choice.lower() != 'y' and choice.lower() != 'yes':
-    print('Aborted!')
-    sys.exit(0)
+# choice = input('Confirm card write (Y or N)? ')
+# if choice.lower() != 'y' and choice.lower() != 'yes':
+#     print('Aborted!')
+#     sys.exit(0)
 print('Writing card (DO NOT REMOVE CARD FROM PN532)...')
 
 # Write the card!
@@ -92,7 +92,7 @@ if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
 # Format is as follows:
 # - 2 bytes 0-1 store a header with ASCII value, for example 'BG'
 # - 6 bytes 2-7 store the user data, for example user ID
-data = bytearray(16)
+data = bytearray(32)
 # Add header
 data[0:2] = HEADER
 # Convert int to hex string with up to 6 digits
