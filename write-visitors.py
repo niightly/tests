@@ -112,4 +112,4 @@ while x < 999999: #block_choice is None:
     if not pn532.mifare_classic_write_block(4, data):
         print('Error! Failed to write to the card.')
         sys.exit(-1)
-    print('Wrote card successfully! You may now remove the card from the PN532.')
+    # print('Wrote card successfully! You may now remove the card from the PN532.')
