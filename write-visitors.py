@@ -100,6 +100,8 @@ data[0:2] = HEADER
 value = block_choice
 while (16 > len(value)):
     value = '0' + value
+
+print('Here goes a new code: {0}'.format(sys.getsizeof(value)))
 data[2:16] = value
 # Finally write the card.
 if not pn532.mifare_classic_write_block(4, data):
