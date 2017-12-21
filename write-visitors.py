@@ -71,9 +71,9 @@ while x < 999999: #block_choice is None:
     block_choice = str(x)
     print('UserID: {0}'.format(block_choice))
 
-    if not (0 <= block_choice < 16777215):
-        print('Error! User ID must be within 0 to 4294967295.')
-        continue
+    # if not (0 <= block_choice < 16777215):
+    #     print('Error! User ID must be within 0 to 4294967295.')
+    #     continue
     # print('')
     # print('You chose the block type: {0}'.format(block_choice))
     # print('')
