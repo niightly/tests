@@ -92,7 +92,7 @@ if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
 # Format is as follows:
 # - 2 bytes 0-1 store a header with ASCII value, for example 'BG'
 # - 6 bytes 2-7 store the user data, for example user ID
-print('Now are 6')
+print('Now are 6 data')
 data = bytearray(16)
 # Add header
 data[0:2] = HEADER
@@ -100,9 +100,9 @@ data[0:2] = HEADER
 value = block_choice
 while (6 > len(value)):
     value = '0' + value
-
-print('Here goes a new code: {0}'.format(sys.getsizeof(value)))
 data[2:8] = value
+print('Here goes a new code: {0}'.format(sys.getsizeof(data)))
+
 # Finally write the card.
 if not pn532.mifare_classic_write_block(4, data):
     print('Error! Failed to write to the card.')
