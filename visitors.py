@@ -52,9 +52,10 @@ while True:
     if uid is None:
         continue
     # Found a card, now try to read block 4 to detect the block type
-    if RFID_ID != binascii.hexlify(uid)
+    tmp_id = binascii.hexlify(uid)
+    if RFID_ID != tmp_id:
         print('')
-        RFID_ID = binascii.hexlify(uid)
+        RFID_ID = tmp_id
         urllib2.urlopen(urllib2.Request(URL.format(RFID_ID)))
         print(URL.format(binascii.hexlify(uid)))
     time.sleep(DELAY);
