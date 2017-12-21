@@ -69,19 +69,19 @@ while x < 999999: #block_choice is None:
     #     continue
     # Decimal value not greater than hex number with 6 digits
         
-    block_choice = x
+    block_choice = str(x)
 
     if not (0 <= block_choice < 16777215):
         print('Error! User ID must be within 0 to 4294967295.')
         continue
-    print('')
-    print('You chose the block type: {0}'.format(block_choice))
-    print('')
+    # print('')
+    # print('You chose the block type: {0}'.format(block_choice))
+    # print('')
 
-    # Confirm writing the block type.
-    print('== STEP 3 =========================')
-    print('Confirm you are ready to write to the card:')
-    print('User ID: {0}'.format(block_choice))
+    # # Confirm writing the block type.
+    # print('== STEP 3 =========================')
+    # print('Confirm you are ready to write to the card:')
+    # print('User ID: {0}'.format(block_choice))
     # choice = input('Confirm card write (Y or N)? ')
     # if choice.lower() != 'y' and choice.lower() != 'yes':
     #     print('Aborted!')
