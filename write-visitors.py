@@ -56,60 +56,52 @@ print('')
 # Step 2, pick a block type.
 print('== STEP 2 =========================')
 block_choice = None
-x = 0
-while x < 20: #block_choice is None:
-    x += 1
+while block_choice is None:
     print('')
-    # block_choice = input('Enter user ID: ')
-    # try:
-    #     block_choice = block_choice
-    # except ValueError:
-    #     print('Error! Unrecognized option.')
-    #     continue
+    block_choice = input('Enter user ID: ')
+    try:
+        block_choice = block_choice
+    except ValueError:
+        print('Error! Unrecognized option.')
+        continue
     # Decimal value not greater than hex number with 6 digits
-        
-    block_choice = str(x)
+    if not (0 <= block_choice < 16777215):
+        print('Error! User ID must be within 0 to 4294967295.')
+        continue
+    print('')
+print('You chose the block type: {0}'.format(block_choice))
+print('')
 
-    # if not (0 <= block_choice < 16777215):
-    #     print('Error! User ID must be within 0 to 4294967295.')
-    #     continue
-    # print('')
-    # print('You chose the block type: {0}'.format(block_choice))
-    # print('')
+# Confirm writing the block type.
+print('== STEP 3 =========================')
+print('Confirm you are ready to write to the card:')
+print('User ID: {0}'.format(block_choice))
+# choice = input('Confirm card write (Y or N)? ')
+# if choice.lower() != 'y' and choice.lower() != 'yes':
+#     print('Aborted!')
+#     sys.exit(0)
+print('Writing card (DO NOT REMOVE CARD FROM PN532)...')
 
-    # # Confirm writing the block type.
-    # print('== STEP 3 =========================')
-    # print('Confirm you are ready to write to the card:')
-    # print('User ID: {0}'.format(block_choice))
-    # choice = input('Confirm card write (Y or N)? ')
-    # if choice.lower() != 'y' and choice.lower() != 'yes':
-    #     print('Aborted!')
-    #     sys.exit(0)
-    print('Writing card (DO NOT REMOVE CARD FROM PN532)...')
-
-    # Write the card!
-    # First authenticate block 4.
-    if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
-                                                   CARD_KEY):
-        print('Error! Failed to authenticate block 4 with the card.')
-        sys.exit(-1)
-    # Next build the data to write to the card.
-    # Format is as follows:
-    # - 2 bytes 0-1 store a header with ASCII value, for example 'BG'
-    # - 6 bytes 2-7 store the user data, for example user ID
-    data = bytearray(16)
-    # Add header
-    data[0:2] = HEADER
-    # Convert int to hex string with up to 6 digits
-    value = block_choice
-    while (x > len(value)):
-        value = '1' + value
-
-    data[2:8] = value
-
-    print('UserID: {0}'.format(value))
-    # Finally write the card.
-    if not pn532.mifare_classic_write_block(4, data):
-        print('Error! Failed to write to the card.')
-        sys.exit(-1)
-    print('Wrote card successfully! You may now remove the card from the PN532.')
+# Write the card!
+# First authenticate block 4.
+if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
+                                               CARD_KEY):
+    print('Error! Failed to authenticate block 4 with the card.')
+    sys.exit(-1)
+# Next build the data to write to the card.
+# Format is as follows:
+# - 2 bytes 0-1 store a header with ASCII value, for example 'BG'
+# - 6 bytes 2-7 store the user data, for example user ID
+data = bytearray(24)
+# Add header
+data[0:2] = HEADER
+# Convert int to hex string with up to 6 digits
+value = block_choice
+while (20 > len(value)):
+    value = '0' + value
+data[2:22] = value
+# Finally write the card.
+if not pn532.mifare_classic_write_block(4, data):
+    print('Error! Failed to write to the card.')
+    sys.exit(-1)
+print('Wrote card successfully! You may now remove the card from the PN532.')
