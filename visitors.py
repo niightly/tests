@@ -59,21 +59,19 @@ while True:
     # Found a card, now try to read block 4 to detect the block type
     print('')
     print(URL.format(binascii.hexlify(uid)))
-    urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
 
-    # # Authenticate and read block 4
-    # if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
-    #                                                CARD_KEY):
-    #     print('Failed to authenticate with card!')
-    #     continue
-    # data = pn532.mifare_classic_read_block(4)
-    # if data is None:
-    #     print('Failed to read data from card!')
-    #     continue
-    # # Check the header
-    # if data[0:2] !=  HEADER:
-    #     print('Card is not written with proper block data!')
-    #     continue
-    # # Parse out the block type and subtype
-    # print('User Id: {0}'.format(int(data[2:8].decode("utf-8"), 16)))
+    # Authenticate and read block 4
+    if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B, CARD_KEY):
+        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
+        continue
+    data = pn532.mifare_classic_read_block(4)
+    if data is None:
+        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
+        continue
+    # Check the header
+    if data[0:2] !=  HEADER:
+        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
+        continue
+    # Parse out the block type and subtype
+        urllib2.urlopen(urllib2.Request(URL.format(int(data[2:8].decode("utf-8"), 16))))
     time.sleep(DELAY);
