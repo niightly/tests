@@ -57,7 +57,7 @@ print('')
 print('== STEP 2 =========================')
 block_choice = None
 x = 0
-while x < 999999 #block_choice is None:
+while x < 999999: #block_choice is None:
     x += 1
     print('')
     print('UserID: {0}'.format(x))
