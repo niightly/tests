@@ -53,6 +53,7 @@ while True:
     # Found a card, now try to read block 4 to detect the block type
     print('')
     print(URL.format(binascii.hexlify(uid)))
+    print('-----------------')
     
 
     # Authenticate and read block 4
@@ -75,6 +76,7 @@ while True:
 
         continue
     # Parse out the block type and subtype
-    print('User Id: {0}'.format(data[2:8].decode("utf-8")))
+    
+    print(URL.format(String(data[2:8].decode("utf-8"))))
     urllib2.urlopen(urllib2.Request(URL.format(data[2:8].decode("utf-8"))))
     time.sleep(DELAY);
