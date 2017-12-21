@@ -98,7 +98,7 @@ data = bytearray(16)
 data[0:2] = HEADER
 # Convert int to hex string with up to 6 digits
 value = block_choice
-while (16 > len(value)):
+while (10 > len(value)):
     value = '0' + value
 
 print('Here goes a new code: {0}'.format(sys.getsizeof(value)))
