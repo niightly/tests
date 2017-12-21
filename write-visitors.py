@@ -60,7 +60,6 @@ x = 0
 while x < 999999: #block_choice is None:
     x += 1
     print('')
-    print('UserID: {0}'.format(x))
     # block_choice = input('Enter user ID: ')
     # try:
     #     block_choice = block_choice
@@ -70,6 +69,7 @@ while x < 999999: #block_choice is None:
     # Decimal value not greater than hex number with 6 digits
         
     block_choice = str(x)
+    print('UserID: {0}'.format(block_choice))
 
     if not (0 <= block_choice < 16777215):
         print('Error! User ID must be within 0 to 4294967295.')
