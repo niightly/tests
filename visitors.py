@@ -9,12 +9,6 @@ import urllib2
 
 URL = 'https://visitors-dev.w3-969.ibm.com/api/rfid?number={0}'
 
-f = req)
-for x in f:
-    print(x)
-f.close()
-
-
 import Adafruit_PN532 as PN532
 
 # PN532 configuration for a Raspberry Pi GPIO:
