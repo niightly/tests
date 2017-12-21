@@ -32,6 +32,7 @@ DELAY = 0.5
 
 # Prefix, aka header from the card
 HEADER = b'BG'
+RFID_ID = ""
 
 def close(signal, frame):
         sys.exit(0)
@@ -51,32 +52,9 @@ while True:
     if uid is None:
         continue
     # Found a card, now try to read block 4 to detect the block type
-    print('')
-    print(URL.format(binascii.hexlify(uid)))
-    print('-----------------')
-    
-
-    # Authenticate and read block 4
-    if not pn532.mifare_classic_authenticate_block(uid, 4, PN532.MIFARE_CMD_AUTH_B,
-                                                   CARD_KEY):
-        print('Failed to authenticate with card!')
-        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
-
-        continue
-    data = pn532.mifare_classic_read_block(4)
-    if data is None:
-        print('Failed to read data from card!')
-        urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
-
-        continue
-    # Check the header
-    # if data[:4] !=  HEADER:
-    #     print('Card is not written with proper block data!')
-    #     urllib2.urlopen(urllib2.Request(URL.format(binascii.hexlify(uid))))
-
-    #     continue
-    # Parse out the block type and subtype
-    print('Read block 4: 0x{0}'.format(data[2:16].decode("utf-8")))
-    # print(URL.format(data[2:8].decode("utf-8")))
-    # urllib2.urlopen(urllib2.Request(URL.format(data[2:8].decode("utf-8"))))
+    if RFID_ID != binascii.hexlify(uid)
+        print('')
+        RFID_ID = binascii.hexlify(uid)
+        urllib2.urlopen(urllib2.Request(URL.format(RFID_ID)))
+        print(URL.format(binascii.hexlify(uid)))
     time.sleep(DELAY);
