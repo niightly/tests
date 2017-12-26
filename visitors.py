@@ -14,11 +14,11 @@ import Adafruit_PN532 as PN532
 # PN532 configuration for a Raspberry Pi GPIO:
 
 # GPIO 18, pin 12 => SS
-CS   = 3
+CS   = 2
 # GPIO 23, pin 16 => MOSI
-MOSI = 5
+MOSI = 3
 # GPIO 24, pin 18 => MSO
-MISO = 7
+MISO = 4
 # GPIO 25, pin 22 => SCK
 SCLK = 11
 
