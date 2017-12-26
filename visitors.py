@@ -13,14 +13,14 @@ import Adafruit_PN532 as PN532
 
 # PN532 configuration for a Raspberry Pi GPIO:
 
-# GPIO 18, pin 12
-CS   = 18
-# GPIO 23, pin 16
-MOSI = 23
-# GPIO 24, pin 18
-MISO = 24
-# GPIO 25, pin 22
-SCLK = 25
+# GPIO 18, pin 12 => SS
+CS   = 3
+# GPIO 23, pin 16 => MOSI
+MOSI = 5
+# GPIO 24, pin 18 => MSO
+MISO = 7
+# GPIO 25, pin 22 => SCK
+SCLK = 11
 
 # Configure the key to use for writing to the MiFare card.  You probably don't
 # need to change this from the default below unless you know your card has a
@@ -28,7 +28,7 @@ SCLK = 25
 CARD_KEY = [0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF]
 
 # Number of seconds to delay after reading data.
-DELAY = 0.5
+DELAY = 0.1
 
 # Prefix, aka header from the card
 HEADER = b'BG'
