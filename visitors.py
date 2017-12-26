@@ -20,7 +20,7 @@ MOSI = 3
 # GPIO 24, pin 18 => MSO
 MISO = 4
 # GPIO 25, pin 22 => SCK
-SCLK = 11
+SCLK = 17
 
 # Configure the key to use for writing to the MiFare card.  You probably don't
 # need to change this from the default below unless you know your card has a
